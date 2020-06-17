@@ -2,7 +2,7 @@ package com.example.accessingdatamongodb;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface TransactionRepository extends MongoRepository<Transaction,String>{
+public interface WalletRepository extends MongoRepository<Wallet,String>{
 
 
 }

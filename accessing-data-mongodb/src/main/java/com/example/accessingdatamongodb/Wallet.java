@@ -16,11 +16,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
+@Document(collection="toutput")
 public class Wallet {
 	
 	public PrivateKey privateKey;
-	
+	@Id
 	public PublicKey publicKey;
 	
 	public HashMap<String,TransactionOutput> UTXOs = new HashMap<String,TransactionOutput>();
@@ -75,8 +75,8 @@ public class Wallet {
 			if(total > value) break;
 		}
 		
-		Transaction newTransaction = new Transaction(publicKey, _recipient , value);
-		//newTransaction.generateSignature(privateKey);
+		Transaction newTransaction = new Transaction(publicKey, _recipient , value,inputs);
+		newTransaction.generateSignature(privateKey);
 		
 		for(TransactionInput input: inputs){
 			UTXOs.remove(input.transactionOutputId);
