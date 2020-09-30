@@ -39,6 +39,8 @@ public class Customer {
 
 	
 	public ArrayList<String> transactions = new ArrayList<String>();
+	ch= "a"; // new 
+	int =b ; // new  
 
 	public Customer(String previousHash ) {
 		
